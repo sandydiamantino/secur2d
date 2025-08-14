@@ -1,7 +1,10 @@
 import Slider from '@react-native-community/slider';
+import { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Index() {
+
+  const [size, setSize] = useState(10);
  
   return (
     <View style={styles.container}>
@@ -11,7 +14,7 @@ export default function Index() {
         style={styles.logo}
       />      
 
-      <Text style={styles.title}>20 caracteres</Text>
+      <Text style={styles.title}>{size} caracteres</Text>
 
       <View style={styles.area}>
         <Slider
@@ -21,6 +24,8 @@ export default function Index() {
         maximumTrackTintColor='#ff0000'
         minimumTrackTintColor='#000'
         thumbTintColor='#392de9'
+        value = {size}
+        onValueChange={(value) => setSize(Number(value.toFixed(0)))}
         />
       </View>
 
